@@ -1,0 +1,22 @@
+﻿生成启动时间为 2018/3/28 23:31:11。
+     1>项目“C:\Users\咸鱼\Desktop\opencv-Serial\opencv-Serial\opencv-Serial.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         H:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /GL /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Release\\" /Fd"x64\Release\vc140.pdb" /Gd /TP /errorReport:prompt main.cpp Serial.cpp
+         main.cpp
+         Serial.cpp
+       Link:
+         H:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\咸鱼\Desktop\opencv-Serial\x64\Release\opencv-Serial.exe" /INCREMENTAL:NO /NOLOGO opencv_world330d.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\咸鱼\Desktop\opencv-Serial\x64\Release\opencv-Serial.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG:incremental /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\咸鱼\Desktop\opencv-Serial\x64\Release\opencv-Serial.lib" /MACHINE:X64 x64\Release\main.obj
+         x64\Release\Serial.obj
+     1>main.obj : error LNK2001: 无法解析的外部符号 "void __cdecl cv::drawContours(class cv::_InputOutputArray const &,class cv::_InputArray const &,int,class cv::Scalar_<double> const &,int,int,class cv::_InputArray const &,int,class cv::Point_<int>)" (?drawContours@cv@@YAXAEBV_InputOutputArray@1@AEBV_InputArray@1@HAEBV?$Scalar_@N@1@HH1HV?$Point_@H@1@@Z)
+     1>main.obj : error LNK2001: 无法解析的外部符号 "void __cdecl cv::imshow(class cv::String const &,class cv::_InputArray const &)" (?imshow@cv@@YAXAEBVString@1@AEBV_InputArray@1@@Z)
+     1>main.obj : error LNK2001: 无法解析的外部符号 "void __cdecl cv::erode(class cv::_InputArray const &,class cv::_OutputArray const &,class cv::_InputArray const &,class cv::Point_<int>,int,int,class cv::Scalar_<double> const &)" (?erode@cv@@YAXAEBV_InputArray@1@AEBV_OutputArray@1@0V?$Point_@H@1@HHAEBV?$Scalar_@N@1@@Z)
+     1>main.obj : error LNK2001: 无法解析的外部符号 "double __cdecl cv::threshold(class cv::_InputArray const &,class cv::_OutputArray const &,double,double,int)" (?threshold@cv@@YANAEBV_InputArray@1@AEBV_OutputArray@1@NNH@Z)
+     1>main.obj : error LNK2001: 无法解析的外部符号 "void __cdecl cv::cvtColor(class cv::_InputArray const &,class cv::_OutputArray const &,int,int)" (?cvtColor@cv@@YAXAEBV_InputArray@1@AEBV_OutputArray@1@HH@Z)
+     1>main.obj : error LNK2001: 无法解析的外部符号 "class cv::_InputOutputArray const & __cdecl cv::noArray(void)" (?noArray@cv@@YAAEBV_InputOutputArray@1@XZ)
+     1>main.obj : error LNK2001: 无法解析的外部符号 "void __cdecl cv::findContours(class cv::_InputOutputArray const &,class cv::_OutputArray const &,int,int,class cv::Point_<int>)" (?findContours@cv@@YAXAEBV_InputOutputArray@1@AEBV_OutputArray@1@HHV?$Point_@H@1@@Z)
+     1>C:\Users\咸鱼\Desktop\opencv-Serial\x64\Release\opencv-Serial.exe : fatal error LNK1120: 7 个无法解析的外部命令
+     1>已完成生成项目“C:\Users\咸鱼\Desktop\opencv-Serial\opencv-Serial\opencv-Serial.vcxproj”(Build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:02.75
