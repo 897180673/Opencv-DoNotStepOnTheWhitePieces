@@ -1,8 +1,9 @@
 # Opencv-DoNotStepOnTheWhitePieces
+# 注意,代码不能上来就直接运行,有些地方需要微调下
+# Opencv-DoNotStepOnTheWhitePieces
+# 参考blog:https://blog.csdn.net/a897180673/article/category/7916419
 
-#注意,代码不能上来就直接运行,有些地方需要微调下
-
-#参考blog:https://blog.csdn.net/a897180673/article/category/7916419
+ 
 
 
 ![image](https://github.com/897180673/Opencv-DoNotStepOnTheWhitePieces/blob/master/images/712481952646921673.jpg)
