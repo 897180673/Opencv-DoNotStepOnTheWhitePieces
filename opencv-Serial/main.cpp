@@ -11,61 +11,101 @@ using namespace cv;
 CSerial serial;
 
 void  serialInit() {
-	serial.OpenSerialPort(_T("COM9:"), 9600, 8, 1);
+	serial.OpenSerialPort(_T("COM3:"), 9600, 8, 1);
 }
 void Send(char x) {
-	serial.SendData(&x,1);
+	serial.SendData(&x, 1);
 }
 
 
 
 int main(int argc, char** argv) {
-	//serialInit();
+	serialInit();
 	//Mat src=imread("G:\\360Downloads\\Í¼Æ¬\\DIR75\\YX30ozsUXgAAYvIarTuuXQAA&amp;bo=ngL3AQAAAAABAE0!.jpg");
-	VideoCapture cap("C:\\Users\\ÏÌÓã\\Desktop\\123.mp4");// open the default camera  
+	VideoCapture cap(1);// open the default camera  
+	
 	
 	Mat src;
 	Mat grayImage;
 	Mat binImage;
 	Mat dilateImage;
 
-	Mat element = getStructuringElement(MORPH_RECT, Size(2,2)); //ÅòÕÍÓÃµ½
-	vector<vector<Point> > contours;//Í¼ÏñÂÖÀª
+	Mat element = getStructuringElement(MORPH_RECT, Size(2, 2)); //ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½
+	vector<vector<Point> > contours;
+	vector<vector<Point> > usefulcontours;//Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	cap >> src;
 	while (!src.empty()) {
-	
+
 		cap >> src;
-		src = imread("C:\\Users\\ÏÌÓã\\Pictures\\Camera Roll\\1.jpg");
-	//	imwrite("D:\\123\\123.jpg", src);
+		//src = imread("C:\\Users\\Administrator\\Desktop\\new\\111.png");
+		//	imwrite("D:\\123\\123.jpg", src);
 		cvtColor(src, grayImage, CV_BGR2GRAY);
-		threshold(grayImage, binImage, 50, 255, CV_THRESH_BINARY);
+		threshold(grayImage, binImage, 130, 255, CV_THRESH_BINARY_INV);
 
-		dilate(binImage, dilateImage, element);
+		erode(binImage, binImage, element,Point(-1,-1), 2);
 
-		findContours(dilateImage, contours, CV_RETR_TREE, CV_CHAIN_APPROX_SIMPLE);
+		findContours(binImage, contours, CV_RETR_TREE, CV_CHAIN_APPROX_SIMPLE);
 
-		drawContours(src, contours, -1, Scalar(0, 0, 255),2);
+		//drawContours(src, contours, -1, Scalar(0, 0, 255), 2);
 
+
+		int blob = src.cols / 4;
+
+		for (int k = 0; k < contours.size();k++ ) {
+			cout << contourArea(contours[k]) << endl;
+			if (contourArea(contours[k]) > 9000 ) {
+				usefulcontours.push_back(contours[k]);
+			}
+		}
+
+		//æ‰¾å‡º4ä¸ªå—çš„æœ€ä¸‹é¢çš„å—
+ 
+		cv::RotatedRect rotateRect = cv::minAreaRect(usefulcontours[0]);
+		int  maxY=rotateRect.center.y;
+		int x=0;
+		for(int i=0;i<usefulcontours.size();i++){
+			
+			 cv::RotatedRect rotateRect = cv::minAreaRect(usefulcontours[i]);
+				
+			 int y=rotateRect.center.y;
 	
+			if(y>=maxY){
+                            maxY=y;
+			    x=rotateRect.center.x;
+			}
+		}
+		
+		if(x>=0 && x<=blob){
+			Send('a');
+		}
+		
+		if(x>=blob && x<=blob*2){
+			Send('b');
+		}
+		
+		if(x>=blob*2 && x<=blob*3){
+			Send('c');
+		}
+		
+		if(x>=blob*3 && x<=blob*4){
+			Send('d');
+		}
 
-		imshow("", src);
+
+		//imshow("", src);
 		src = NULL;
-		 grayImage = NULL;
-		 binImage = NULL;
-		 dilateImage = NULL;
+		grayImage = NULL;
+		binImage = NULL;
+		dilateImage = NULL;
 
-	//	Send('a');
-	//	Send('b');
-	//	Send('c');
-
-
-		waitKey(1);
+ 
+		//waitKey(1);
 	}
-	
 
 
 
-	
+
+
 	waitKey();
 
 
@@ -76,5 +116,6 @@ int main(int argc, char** argv) {
 		cin >> a;
 		Send(a);
 	}
+	//getchar();
 	return 0;
 }
